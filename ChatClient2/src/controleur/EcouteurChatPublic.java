@@ -3,6 +3,7 @@ package controleur;
 import com.chat.client.ClientChat;
 import com.chat.commun.net.Connexion;
 import vue.PanneauChat;
+import com.chat.client.GestionnaireEvenementClient2;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,5 +26,12 @@ public class EcouteurChatPublic implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent evt) {
         //à compléter
+        if(!panneauChat.getChampDeSaisie().getText().equals("")){
+
+            clientChat.envoyer("MSG " + panneauChat.getChampDeSaisie().getText() );
+            panneauChat.ajouter("MOI>>"+panneauChat.getChampDeSaisie().getText() );
+            panneauChat.getChampDeSaisie().setText("");
+
+        }
     }
 }

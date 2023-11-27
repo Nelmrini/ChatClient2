@@ -61,6 +61,7 @@ public class PanneauPrincipal  extends JPanel {
         JSplitPane jsp1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,panneauChatPublic,bureau);
         jsp1.setDividerLocation(300);
         this.add(jsp1, BorderLayout.CENTER);
+
     }
 
     public void ajouterMessage(String msg) {
