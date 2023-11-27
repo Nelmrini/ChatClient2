@@ -64,7 +64,7 @@ public class EcouteurMenuPrincipal implements ActionListener {
                                 recommencer=false;
                             } catch (NumberFormatException exp) {
                                 JOptionPane.showMessageDialog(fenetre, "Le port ("
-                                                                + pcs.getPortServeur() + ") doit être entier");
+                                        + pcs.getPortServeur() + ") doit être entier");
                             }
                         }
                         else
