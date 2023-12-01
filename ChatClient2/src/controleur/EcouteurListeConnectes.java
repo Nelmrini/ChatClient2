@@ -1,6 +1,7 @@
 package controleur;
 
 import com.chat.client.ClientChat;
+import vue.PanneauPrincipal;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -22,6 +23,10 @@ public class EcouteurListeConnectes extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent evt) {
-        //à compléter
+
+        if(evt.getClickCount() == 2) {
+            JList<?> clickedList = (JList<?>) evt.getSource();
+            clientChat.envoyer("JOIN " + clickedList.getSelectedValue());
+        }
     }
 }
