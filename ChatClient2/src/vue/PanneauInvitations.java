@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.List;
+import controleur.EcouteurPanneauInvitations;
 
 /**
  *
@@ -16,6 +17,8 @@ public class PanneauInvitations extends JPanel {
     private DefaultListModel<String> invitationsRecues;
     private JButton bAccepte, bRefuse;
     private ActionListener ecouteur;
+    private EcouteurPanneauInvitations ecouteurPanneauInvitations;
+
 
     public PanneauInvitations() {
         Font police = new Font("",Font.BOLD,15);
@@ -43,6 +46,8 @@ public class PanneauInvitations extends JPanel {
         pSud.add(bRefuse);
         this.add(jsp1, BorderLayout.CENTER);
         this.add(pSud, BorderLayout.SOUTH);
+
+        setEcouteur(ecouteurPanneauInvitations);
     }
     public void setEcouteur(ActionListener ecouteur) {
         this.ecouteur = ecouteur;
@@ -61,4 +66,5 @@ public class PanneauInvitations extends JPanel {
     public void vider() {
         this.invitationsRecues.clear();
     }
+
 }
