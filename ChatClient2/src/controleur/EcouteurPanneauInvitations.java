@@ -21,7 +21,8 @@ public class EcouteurPanneauInvitations implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         JButton b = (JButton)e.getSource();
-String choice = b.getActionCommand();
+        String choice = b.getActionCommand();
+        System.out.println(choice);
 
         if ("ACCEPTER".equals(choice)) {
             for(int i=0;i<panneauInvitations.getElementsSelectionnes().size();i++){

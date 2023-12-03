@@ -26,6 +26,7 @@ public class PanneauInvitations extends JPanel {
         invitationsRecues = new DefaultListModel<>();
         jlInvitationsRecues = new JList<>(invitationsRecues);
 
+
         bAccepte = new JButton("+");
         bAccepte.setActionCommand("ACCEPTER");
         bRefuse = new JButton("x");
@@ -50,7 +51,6 @@ public class PanneauInvitations extends JPanel {
         this.add(jsp1, BorderLayout.CENTER);
         this.add(pSud, BorderLayout.SOUTH);
 
-        setEcouteur(ecouteurPanneauInvitations);
     }
     public void setEcouteur(ActionListener ecouteur) {
         this.ecouteur = ecouteur;

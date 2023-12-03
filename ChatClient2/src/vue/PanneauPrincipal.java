@@ -4,6 +4,7 @@ import com.chat.client.ClientChat;
 import controleur.EcouteurChatPrive;
 import controleur.EcouteurChatPublic;
 import controleur.EcouteurListeConnectes;
+import controleur.EcouteurPanneauInvitations;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,6 +38,8 @@ public class PanneauPrincipal  extends JPanel {
         panneauChatPublic.setEcouteur(ecouteurChatPublic);
 
         panneauInvitations = new PanneauInvitations();
+        EcouteurPanneauInvitations ecouteurPanneauInvitations = new EcouteurPanneauInvitations(clientChat, panneauInvitations);
+        panneauInvitations.setEcouteur(ecouteurPanneauInvitations);
 
         panneauxPrives = new HashMap<>();
 
