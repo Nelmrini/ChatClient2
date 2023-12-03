@@ -36,6 +36,9 @@ public class PanneauInvitations extends JPanel {
         bAccepte.setBackground(Color.WHITE);
         bRefuse.setForeground(Color.RED);
         bRefuse.setBackground(Color.WHITE);
+        jlInvitationsRecues.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION );
+
+
 
         this.setLayout(new BorderLayout());
         JPanel pSud = new JPanel();
