@@ -14,7 +14,7 @@ public class PanneauConfigServeur extends JPanel {
 
     public PanneauConfigServeur(String adr, int port) {
         //à compléter
-        txtAdrServeur = new JTextField();
+        txtAdrServeur = new JTextField("127.0.0.1");
         JLabel ip = new JLabel("Adresse IP : ");
         txtNumPort = new JTextField(Integer.toString(port));
         JLabel place = new JLabel("Port : ");

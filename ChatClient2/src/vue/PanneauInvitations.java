@@ -1,10 +1,11 @@
 package vue;
 
+import controleur.EcouteurPanneauInvitations;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.List;
-import controleur.EcouteurPanneauInvitations;
 
 /**
  *

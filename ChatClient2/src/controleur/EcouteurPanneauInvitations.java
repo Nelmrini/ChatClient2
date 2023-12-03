@@ -20,9 +20,9 @@ public class EcouteurPanneauInvitations implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+panneauInvitations.getElementsSelectionnes();
         JButton b = (JButton)e.getSource();
-        String choice = b.getActionCommand();
-        System.out.println(choice);
+String choice = b.getActionCommand();
 
         if ("ACCEPTER".equals(choice)) {
             for(int i=0;i<panneauInvitations.getElementsSelectionnes().size();i++){

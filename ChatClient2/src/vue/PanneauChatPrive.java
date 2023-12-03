@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 public class PanneauChatPrive extends PanneauChat {
     private JButton bAccepterOuInviter, bRefuser;
     private FenetreEchecs fenetreEchecs;
+
+
     public PanneauChatPrive() {
         bAccepterOuInviter = new JButton("Inviter échec");
         bRefuser = new JButton("Refuser");
@@ -20,8 +22,15 @@ public class PanneauChatPrive extends PanneauChat {
         bAccepterOuInviter.setActionCommand("ACCEPTER");
         bRefuser.setActionCommand("REFUSER");
 
+
         //à compléter
 
+
+        this.setLayout(new BorderLayout());
+        JPanel pNord = new JPanel();
+        pNord.add(bAccepterOuInviter);
+        pNord.add(bRefuser);
+        this.add(pNord, BorderLayout.NORTH);
     }
     @Override
     public void setEcouteur(ActionListener ecouteur) {
@@ -30,10 +39,11 @@ public class PanneauChatPrive extends PanneauChat {
         bRefuser.addActionListener(ecouteur);
     }
     public void invitationEchecRecue() {
-        //à compléter
+        bAccepterOuInviter.setText("Accepter");
+        revalidate();
     }
     public void invitationEchecAnnulee() {
-        //à compléter
+
     }
 
     public void setFenetreEchecs(FenetreEchecs fenetreEchecs) {

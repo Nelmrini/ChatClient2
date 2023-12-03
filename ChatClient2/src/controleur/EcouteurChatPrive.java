@@ -20,5 +20,17 @@ public class EcouteurChatPrive extends EcouteurChatPublic {
         this.alias = alias;
     }
     //à compléter (redéfinir la méthode actionPerformed())
+    public void actionPerformed(ActionEvent e) {
 
+        JButton b = (JButton)e.getSource();
+        String choice = b.getActionCommand();
+
+        if ("ACCEPTER".equals(choice)) {
+            clientChat.envoyer("CHESS " + alias);
+        }
+        if("REFUSER".equals(choice)){
+            clientChat.envoyer("DECLINE " + alias);
+
+        }
+    }
 }
