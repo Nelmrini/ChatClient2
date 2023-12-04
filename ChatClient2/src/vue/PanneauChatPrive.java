@@ -26,10 +26,11 @@ public class PanneauChatPrive extends PanneauChat {
         //à compléter
 
 
-        this.setLayout(new BorderLayout());
+
         JPanel pNord = new JPanel();
         pNord.add(bAccepterOuInviter);
         pNord.add(bRefuser);
+        bRefuser.setVisible(false);
         this.add(pNord, BorderLayout.NORTH);
     }
     @Override
@@ -40,10 +41,15 @@ public class PanneauChatPrive extends PanneauChat {
     }
     public void invitationEchecRecue() {
         bAccepterOuInviter.setText("Accepter");
-        revalidate();
+        bRefuser.setVisible(true);
+        this.revalidate();
+        this.repaint();
     }
     public void invitationEchecAnnulee() {
-
+        bAccepterOuInviter.setText("Inviter échec");
+        bRefuser.setVisible(false);
+        this.revalidate();
+        this.repaint();
     }
 
     public void setFenetreEchecs(FenetreEchecs fenetreEchecs) {

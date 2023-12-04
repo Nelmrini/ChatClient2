@@ -1,91 +1,90 @@
 package com.chat.commun.net;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
+
 /**
- * Cette classe représente un point de connexion d'un client vers un serveur ou d'un serveur vers un client.
- * Encapsule le socket utilisé pour la connexion ainsi que les flux de caractères pour envoyer et recevoir du texte.
+ * Cette classe reprÃ©sente un point de connexion d'un client vers un serveur ou d'un serveur vers un client.
+ * Encapsule le socket utilisÃ© pour la connexion ainsi que les flux de caractÃ¨res pour envoyer et recevoir du texte.
  *
- * @author Abdelmoumène Toudeft (Abdelmoumene.Toudeft@etsmtl.ca)
+ * @author AbdelmoumÃ¨ne Toudeft (Abdelmoumene.Toudeft@etsmtl.ca)
  * @version 1.0
  * @since 2023-09-01
  */
 public class Connexion {
 
-	private Socket 				socket;
-	private PrintWriter 		os;
-	private BufferedInputStream is;
+	private Socket socket;
+	private PrintWriter os;
+	//private BufferedInputStream is;
+	private BufferedReader is2;
+
 	/**
-	 * Construit une connexion sur un socket, initialisant les flux de caractères utilisés par le socket.
+	 * Construit une connexion sur un socket, initialisant les flux de caractÃ¨res utilisÃ©s par le socket.
 	 *
-	 * @param s Socket Le socket sur lequel la connexion est créée
+	 * @param s Socket Le socket sur lequel la connexion est crÃ©Ã©e
 	 */
-	public Connexion(Socket s)
-	{
-		try
-		{
-		  socket = s;
-		  is = new BufferedInputStream(socket.getInputStream());
-		  os = new PrintWriter(socket.getOutputStream());			
-		}
-		catch(IOException e)
-		{		
+	public Connexion(Socket s) {
+		try {
+			socket = s;
+			//is = new BufferedInputStream(socket.getInputStream());
+			is2 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			os = new PrintWriter(socket.getOutputStream());
+		} catch (IOException e) {
 		}
 	}
+
 	/**
-	 * Vérifie si du texte est arrivé sur la connexion et le retourne. Retourne la chaine vide s'il n'y a pas de texte.
+	 * VÃ©rifie si du texte est arrivÃ© sur la connexion et le retourne. Retourne la chaine vide s'il n'y a pas de texte.
 	 *
-	 * @return String le texte reçu, ou la chaine vide, si aucun texte n'est arrivé.
+	 * @return String le texte reÃ§u, ou la chaine vide, si aucun texte n'est arrivÃ©.
 	 */
-	public String getAvailableText()
-	{
+	public String getAvailableText() {
 		String t = "";
-		try
-		 {
-			byte buf[] = new byte[2000];	//buffer de lecture
-						
-			if (is.available()<=0)
-				return "";
-			//Lire le inputstream
-			is.read(buf);
-			t = (new String(buf)).trim();
+		try {
+			//byte buf[] = new byte[2000];    //buffer de lecture
+
+			if (is2.ready()) {
+				t = is2.readLine();
+				if (t==null)
+					t = "";
+				else
+					t = t.trim();
+			}
+            /*if (is.available() <= 0)
+                return "";
+            //Lire le inputstream
+            is.read(buf);
+            t = (new String(buf)).trim();*/
 			//System.out.println(texte);
 			//Effacer le buffer
-			buf=null;
+			//buf = null;
+		} catch (IOException e) {
 		}
-		catch(IOException e) 
-		{
-		}			
 		return t;
 	}
+
 	/**
 	 * Envoie un texte sur la connexion
 	 *
-	 * @param texte String texte envoyé
+	 * @param texte String texte envoyÃ©
 	 */
-	public void envoyer(String texte)
-	 {
-		os.print(texte);
+	public void envoyer(String texte) {
+		os.println(texte);
 		os.flush();
-	 }
+	}
+
 	/**
-	 * Ferme la connexion en fermant le socket et les flux utilisés.
+	 * Ferme la connexion en fermant le socket et les flux utilisÃ©s.
 	 *
-	 * @return true si la connexion a été fermée correctement et false, sinon.
+	 * @return true si la connexion a Ã©tÃ© fermÃ©e correctement et false, sinon.
 	 */
-	public boolean close()
-	{
-		try
-		{
-		  //envoyer("Connexion closed !");
-		  is.close();
-		  os.close();			
-		  socket.close();
-		}
-		catch(IOException e)
-		{
+	public boolean close() {
+		try {
+			//is.close();
+			is2.close();
+			os.close();
+			socket.close();
+		} catch (IOException e) {
 			return false;
 		}
 		return true;

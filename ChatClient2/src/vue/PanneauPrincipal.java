@@ -116,6 +116,7 @@ public class PanneauPrincipal  extends JPanel {
     }
 
     public void ajouterMessagePrive(String alias, String msg) {
+        this.panneauxPrives.get(alias).ajouter(msg);
         String message = alias+">>"+msg;
         System.out.println("PRIVÉ : "+alias+">>"+msg);
         //à compléter
