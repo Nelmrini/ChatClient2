@@ -51,6 +51,40 @@ public class EtatPartieEchecs extends Observable {
     public boolean move(String deplacement) {
         boolean res = false;
         //à compléter
+        int posI1 = 0, posF1 = 0;
+        int posI2 = 0, posF2 = 0;
+
+        boolean possible;
+        if(deplacement.length()<5){
+            posI1 = deplacement.charAt(0) - 'a';
+            posI2 = (Character.getNumericValue(deplacement.charAt(1)));
+            posF1 = deplacement.charAt(2) - 'a';
+            posF2 = (Character.getNumericValue(deplacement.charAt(3)));
+
+            etatEchiquier[posI2][posF2]=etatEchiquier[posI1][posF1];
+            etatEchiquier[posI1][posF1]=' ';
+
+            notifierObservateurs();
+            res = true;
+
+        } else if(deplacement.length()<6 && (deplacement.substring(2,3).equals("-") || deplacement.substring(2,3).equals(" "))){
+
+            posI1 = deplacement.charAt(0) - 'a';
+            posI2 = (Character.getNumericValue(deplacement.charAt(1)));
+            posF1 = deplacement.charAt(3) - 'a';
+            posF2 = (Character.getNumericValue(deplacement.charAt(4)));
+
+            etatEchiquier[posI2][posF2]=etatEchiquier[posI1][posF1];
+            etatEchiquier[posI1][posF1]=' ';
+
+            notifierObservateurs();
+            res = true;
+
+        } else {
+
+            res = false;
+
+        }
 
         return res;
     }
