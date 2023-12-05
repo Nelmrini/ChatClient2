@@ -38,21 +38,22 @@ public class EcouteurChatPrive extends EcouteurChatPublic implements ActionListe
             JTextField textField = (JTextField) e.getSource();
             String text = textField.getText();
 
-            if (!text.equals("")) {
-                clientChat.envoyer("PRV " + alias + " " + text);
-                panneauChat.ajouter("MOI>>" + text);
-                textField.setText("");
-            }
-            else if (panneauChat.getChampDeSaisie().getText().equals("QUIT")){
+            if (panneauChat.getChampDeSaisie().getText().equals("QUIT")){
 
-                clientChat.envoyer("QUIT");
+                clientChat.envoyer("QUIT " + alias);
 
             }
-            else if (panneauChat.getChampDeSaisie().getText().equals("ABANDON")){
+            else  if (panneauChat.getChampDeSaisie().getText().equals("ABANDON")){
 
                 clientChat.envoyer("ABANDON");
 
             }
+            else  if (!text.equals("")) {
+                clientChat.envoyer("PRV " + alias + " " + text);
+                panneauChat.ajouter("MOI>>" + text);
+                textField.setText("");
+            }
+
         }
     }
 
