@@ -34,6 +34,7 @@ public class EcouteurChatPrive extends EcouteurChatPublic implements ActionListe
             } else if ("REFUSER".equals(choice)) {
                 clientChat.envoyer("DECLINE " + alias);
             }
+
         } else if (e.getSource() instanceof JTextField) {
             JTextField textField = (JTextField) e.getSource();
             String text = textField.getText();
