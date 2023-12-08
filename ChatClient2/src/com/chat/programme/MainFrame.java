@@ -94,6 +94,7 @@ public class MainFrame extends JFrame implements Runnable, Observateur {
         EventQueue.invokeLater( new MainFrame() );
     }
 
+
     @Override
     public void seMettreAJour(Observable observable) {
         if (observable instanceof Client) {
@@ -112,4 +113,5 @@ public class MainFrame extends JFrame implements Runnable, Observateur {
             }
         }
     }
+
 }

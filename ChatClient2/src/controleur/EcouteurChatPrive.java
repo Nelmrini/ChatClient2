@@ -42,12 +42,13 @@ public class EcouteurChatPrive extends EcouteurChatPublic implements ActionListe
             if (panneauChat.getChampDeSaisie().getText().equals("QUIT")){
 
                 clientChat.envoyer("QUIT " + alias);
-
             }
             else  if (panneauChat.getChampDeSaisie().getText().equals("ABANDON")){
 
                 clientChat.envoyer("ABANDON");
-
+                panneauChat.ajouter("MOI>>" + " ABANDON");
+                clientChat.envoyer("PRV " + alias + " ABANDON");
+                textField.setText("");
             }
             else  if (!text.equals("")) {
                 clientChat.envoyer("PRV " + alias + " " + text);

@@ -159,7 +159,6 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                    fenetreEchecs.setVisible(true);
                     //à compléter
 
-                    panneauPrincipal.setFenetreEchecs(arg,fenetreEchecs);
                     break;
                 case "INVALID":
                     System.out.println(evenement.getArgument());

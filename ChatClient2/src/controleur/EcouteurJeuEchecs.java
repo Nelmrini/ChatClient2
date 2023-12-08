@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 public class EcouteurJeuEchecs implements ActionListener {
 
     private ClientChat clientChat;
+    private String premierClic;
+    private String deuxiemeClic;
 
     public EcouteurJeuEchecs(ClientChat clientChat) {
         this.clientChat = clientChat;
@@ -17,6 +19,13 @@ public class EcouteurJeuEchecs implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //à compléter
+         if (premierClic == null) {
+             premierClic = e.getActionCommand();
+         } else {
+             deuxiemeClic = e.getActionCommand();
+             clientChat.envoyer("MOVE " + premierClic + " " + deuxiemeClic);
+             premierClic = null;
+             deuxiemeClic = null;
+         }
     }
 }
