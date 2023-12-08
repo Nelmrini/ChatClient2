@@ -157,6 +157,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                    fenetreEchecs = new FenetreEchecs(panneauEchiquier, "Vous (" + str + ") contre " +arg);
                    panneauPrincipal.setFenetreEchecs(arg, fenetreEchecs);
                    fenetreEchecs.setVisible(true);
+                   panneauPrincipal.annuleInviteEchecs(arg);
                     //à compléter
 
                     break;
@@ -181,7 +182,17 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     //On détruit la fenêtre de jeu d'échecs :
                     panneauPrincipal.setFenetreEchecs(arg,null);
                     break;
+
+                case "ABANDON2":
+                    arg = evenement.getArgument();
+                    fenetre = (MainFrame)panneauPrincipal.getTopLevelAncestor();
+                    JOptionPane.showMessageDialog(fenetre,"vous avez abandonné la partie d'échecs");
+                    System.out.println(evenement.getArgument());
+                    ((ClientChat)client).setEtatPartieEchecs(null);
+                    panneauPrincipal.setFenetreEchecs(arg,null);
+                    break;
                 /******************* TRAITEMENT PAR DÉFAUT *******************/
+
                 default:
                     System.out.println("RECU : "+evenement.getType()+" "+evenement.getArgument());
             }
