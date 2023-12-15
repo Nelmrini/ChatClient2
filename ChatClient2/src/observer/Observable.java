@@ -7,7 +7,7 @@ import java.util.ListIterator;
  * @since 2002
  * @version 1.0
  */
-public class Observable {
+public class Observable{
 	//Liste des objets qui observent cet Observable :
 	  private ArrayList<Observateur> observateurs = new ArrayList<>();
 		
